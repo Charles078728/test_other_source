@@ -9,25 +9,13 @@ LOCAL_PATH := device/tecno/kelly
 
 # A/B
 AB_OTA_PARTITIONS += \
-    boot \
-    dtbo \
-    gz \
-    lk \
-    logo \
-    md1img \
-    preloader \
-    product \
-    scp \
-    spmfw \
-    sspm \
-    system \
-    system_ext \
-    tee \
-    vbmeta \
-    vbmeta_system \
-    vbmeta_vendor \
     vendor \
-    vendor_boot
+    system_ext \
+    system \
+    boot \
+    vbmeta_vendor \
+    vbmeta_system \
+    product
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -56,9 +44,14 @@ PRODUCT_PACKAGES += \
 
 # Boot Control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-mtkimpl.recovery \
-    android.hardware.boot@1.1-mtkimpl \
-    bootctl
+    android.hardware.keymaster@4.1-service.trustonic \
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-impl.recovery \
+    android.hardware.boot@1.0-service \
+    bootctrl.mt6761 \
+    bootctrl.mt6761.recovery \
+    vendor.trustonic.tee@1.1-service \
+    vendor.mediatek.hardware.keymaster_attestation@1.1-service
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctrl.mt6761
@@ -78,6 +71,3 @@ PRODUCT_PACKAGES += \
     update_verifier \
     update_engine_sideload
 
-# OEM otacerts
-PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(LOCAL_PATH)/security/tecno
